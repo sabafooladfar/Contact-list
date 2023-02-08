@@ -1,18 +1,18 @@
-import { FaTrash ,FaUserCircle} from "react-icons/fa";
+import { FaTrash, FaUserCircle } from "react-icons/fa";
 
-const Contact = ({ contact,deleteContactHandler }) => {
+const Contact = ({ contact, deleteContactHandler }) => {
   return (
     <div className="contacts">
       <div className="contactContainer">
         <div className="contact">
-          <FaUserCircle className="userIcon"/>
+          <FaUserCircle className="userIcon" />
           <div>
             <div>{contact.name}</div>
             <div>{contact.email}</div>
           </div>
         </div>
-        <button onClick={()=>deleteContactHandler(contact.id)}>
-          <FaTrash className="trashIcon"/>
+        <button onClick={(e) => deleteContactHandler(contact.id, e)}>
+          <FaTrash className="trashIcon" />
         </button>
       </div>
     </div>

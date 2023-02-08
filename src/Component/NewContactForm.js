@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 const NewContactForm = ({ addContactHandler }) => {
   const [input, setInput] = useState({ name: "", email: "" });
+
   // console.log(input);
   const submitHandler = (e) => {
     e.preventDefault();
@@ -9,7 +11,7 @@ const NewContactForm = ({ addContactHandler }) => {
   };
 
   return (
-    <form className="newContactForm" onSubmit={submitHandler}>
+    <form className="newContactForm" onSubmit={(e) => submitHandler(e)}>
       <h4>Add Contact</h4>
       <div>
         <label>Name</label>

@@ -20,20 +20,23 @@
   border-radius: 5px;
   background-color: rgba(128, 128, 128, 0.128);
 }
-.newContactForm button {
+.newContactForm button,
+.contactListContainer button {
   margin-top: 20px;
   padding: 7px 20px;
   outline: none;
   border: 1px solid #fff;
   border-radius: 5px;
-  background-color:rgb(89, 89, 190) ;
+  background-color: rgb(89, 89, 190);
+  cursor: pointer;
 }
-.contacts{
+.contacts {
   display: flex;
+  /* margin-bottom: 50px; */
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px;
 }
-.contact{
+.contact {
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
@@ -42,7 +45,7 @@
   /* align-items: flex-start; */
   margin: 5px 10px;
 }
-.contactContainer{
+.contactContainer {
   width: 700px;
   border-bottom: 1px solid rgb(89, 89, 190);
   border-top: 1px solid rgb(89, 89, 190);
@@ -50,23 +53,29 @@
   justify-content: space-between;
   align-items: center;
 }
-.contactContainer button{
+.contactContainer button {
   margin-right: 10px;
   border: none;
   outline: none;
   background-color: #fff;
 }
 
-.userIcon{
+.userIcon {
   width: 20px;
   height: 20px;
 }
-.contact div div{
+.contact div div {
   font-size: 12px;
   font-weight: bold;
   margin-left: 5px;
 }
-.trashIcon{
+.trashIcon {
   color: red;
   cursor: pointer;
+}
+.contactListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

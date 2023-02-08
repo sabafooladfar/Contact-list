@@ -5,7 +5,7 @@ import ContactApp from "./Component/ContactApp";
 function App() {
   return (
     <div>
-      <ContactApp />
+        <ContactApp />
     </div>
   );
 }

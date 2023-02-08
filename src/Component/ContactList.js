@@ -1,4 +1,5 @@
 import Contact from "./Contact";
+import { Link } from "react-router-dom";
 
 const ContactList = ({ contacts, deleteContactHandler }) => {
   const renderContacts = () => {
@@ -8,7 +9,16 @@ const ContactList = ({ contacts, deleteContactHandler }) => {
       );
     });
   };
-  return renderContacts();
+  return (
+    <div>
+      <div className="contactListContainer">
+        <Link to="/add-new-contact">
+          <button>Add New Contact</button>
+        </Link>
+      </div>
+      {renderContacts()}
+    </div>
+  );
 };
 
 export default ContactList;
