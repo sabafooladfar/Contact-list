@@ -2,6 +2,8 @@ import Contact from "./Contact";
 import { Link } from "react-router-dom";
 
 const ContactList = ({ contacts, deleteContactHandler }) => {
+  // let id = useParams().id;
+
   const renderContacts = () => {
     return contacts.map((c) => {
       return (

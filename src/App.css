@@ -53,7 +53,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.contactContainer button {
+.dltBtn {
   margin-right: 10px;
   border: none;
   outline: none;
@@ -78,4 +78,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.editBtn{
+  border: 1px solid rgb(89, 89, 190);
+  padding: 3px 10px;
+  color:rgb(89, 89, 190) ;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
 }

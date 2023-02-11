@@ -3,18 +3,16 @@ import Header from "./Header";
 import NewContactForm from "./NewContactForm";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Routes, Route, redirect } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import NotFound from "./NotFound";
+import Contact from "./Contact";
+import ContactDetail from "./ContactDetail";
+import EditContact from "./EditContact";
 
 const ContactApp = () => {
   const [contacts, setContacts] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3002/contacts")
-      .then((res) => setContacts(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  let navigate = useNavigate();
 
   const addContact = (input) => {
     const newContact = {
@@ -24,31 +22,49 @@ const ContactApp = () => {
     axios
       .post("http://localhost:3002/contacts", newContact)
       .then((res) => {
-        redirect("/");
-        axios.get("http://localhost:3002/contacts");
-        // setContacts(res.data);
+        navigate("/");
+        setContacts([...contacts, newContact]);
       })
       .catch();
-    // setContacts([...contacts, newContact]);
   };
   const deleteContact = (id, e) => {
     e.preventDefault();
+    const filteredContact = contacts.filter((contact) => {
+      return contact.id !== id;
+    });
+    setContacts(filteredContact);
     axios
       .delete(`http://localhost:3002/contacts/${id}`)
-      .then(() => axios.get("http://localhost:3002/contacts"))
-      .then(() => {
-        setContacts([]);
-      })
       .catch((err) => console.log(err));
-    // const filteredContact = contacts.filter((contact) => {
-    //   return contact.id !== id;
-    // });
-    // setContacts(filteredContact);
   };
+  const editContact = async (id, input) => {
+    try {
+      await axios.put(`http://localhost:3002/contacts/${id}`, input);
+      navigate("/");
+      const { data } = await axios.get("http://localhost:3002/contacts");
+      setContacts(data);
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/contacts")
+      .then((res) => setContacts(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <Header />
       <Routes>
+        <Route path="/contact/:id" element={<ContactDetail />} />
+        <Route
+          path="/edit/:id"
+          element={<EditContact editContactHandler={editContact} />}
+        />
         <Route
           path="/add-new-contact"
           element={<NewContactForm addContactHandler={addContact} />}
