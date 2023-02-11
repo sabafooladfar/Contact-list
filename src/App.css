@@ -75,9 +75,8 @@
 }
 .contactListContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .editBtn{
   border: 1px solid rgb(89, 89, 190);
@@ -86,4 +85,12 @@
   border-radius: 5px;
   margin-right: 5px;
   cursor: pointer;
+}
+.contactListContainer input{
+  margin-top: 20px;
+  padding: 6px 10px;
+  outline: none;
+  border: 1px solid rgb(89, 89, 190);
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.128);
 }

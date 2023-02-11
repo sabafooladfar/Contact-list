@@ -1,8 +1,6 @@
 import { FaTrash, FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Contact = ({ contact, deleteContactHandler }) => {
-  // let id = useParams().id;
-  // const navigate = useNavigate();
   return (
     <div className="contacts">
       <div className="contactContainer">

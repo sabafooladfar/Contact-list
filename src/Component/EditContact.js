@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const EditContact = ({ editContactHandler }) => {
+const EditContact = () => {
   const [input, setInput] = useState({ name: "", email: "" });
+  let navigate = useNavigate();
 
   const id = useParams().id;
   //   console.log(id);
-  const submitHandler = (e) => {
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    editContactHandler(id,input);
-    setInput({ name: "", email: "" });
+    try {
+      await axios.put(`http://localhost:3002/contacts/${id}`, input);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

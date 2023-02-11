@@ -1,13 +1,24 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
-const NewContactForm = ({ addContactHandler }) => {
+const NewContactForm = () => {
   const [input, setInput] = useState({ name: "", email: "" });
 
-  // console.log(input);
+  let navigate = useNavigate();
+
   const submitHandler = (e) => {
     e.preventDefault();
-    addContactHandler(input);
-    setInput({ name: "", email: "" });
+    const newContact = {
+      name: input.name,
+      email: input.email,
+    };
+    axios
+      .post("http://localhost:3002/contacts", newContact)
+      .then(() => {
+        navigate("/");
+      })
+      .catch();
   };
 
   return (
